@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO LIST </title>
+
+    <style>
+        .done
+        {
+            text-decoration: line-through;
+        }
+        .div1{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+        body{
+            background-image: url('./octagon_design_to_do_notepad-2_sq_sm.webp');
+            background-size: cover; /* Adjusts the background image size */
+            background-repeat: no-repeat; /* Ensures the image doesn't repeat */
+            background-position: center; /* Centers the image */
+            background-attachment: fixed; /* Keeps the background image fixed during scrolling */
+            background-color: bisque;
+        }
+
+
+    </style>
+</head>
+<body>
+    <DIV class="div1">
+        <h1> TO-DO LIST PROJECT</h1>
+        <input type="text" id="write" style="align-items: center;">
+        <ul id="todo-list" style="list-style-type: none;">
+
+        </ul>
+    </DIV>
+
+    <script>
+        let write=document.getElementById('write');
+        let todolist=document.getElementById('todo-list');
+
+        write.addEventListener("keyup", function(e){
+            if(e.key=="Enter"){
+                addTodo(this.value);
+                this.value=''
+            }
+        })
+
+        function addTodo(val){
+            let list=document.createElement("li");
+            list.innerHTML=`${val}`;
+            todolist.appendChild(list);
+            console.log(val);
+
+            list.addEventListener("click", function(){
+                this.classList.toggle('done');
+            })
+        }
+    </script>
+</body>
+</html>
